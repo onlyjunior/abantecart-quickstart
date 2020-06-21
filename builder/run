@@ -4,7 +4,7 @@ set -x
 
 set -eo pipefail
 
-if grep -q "SERVER_NAME" config.php; [ $? -eq 0 ]; then
+if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then
 
     php install/cli_install.php install 
         --db_hostname=$MYSQL_HOST
