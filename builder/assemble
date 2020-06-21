@@ -12,14 +12,18 @@ set -eo pipefail
 
 mkdir -p /opt/app-root/downloads
 
-mkdir -p /tmp/src/plugins
-mkdir -p /tmp/src/themes
-mkdir -p /tmp/src/languages
-mkdir -p /tmp/src/configs
+mkdir -p /tmp/src/system
+mkdir -p /tmp/src/image
+mkdir -p /tmp/src/download
+mkdir -p /tmp/src/extensions
+mkdir -p /tmp/src/resources
+mkdir -p /tmp/src/admin/system
 
-mv /tmp/src/plugins /opt/app-root/downloads/plugins
-mv /tmp/src/themes /opt/app-root/downloads/themes
-mv /tmp/src/languages /opt/app-root/downloads/languages
-mv /tmp/src/configs /opt/app-root/downloads/configs
+mv /tmp/src/system /opt/app-root/downloads/system
+mv /tmp/src/image /opt/app-root/downloads/image
+mv /tmp/src/download /opt/app-root/downloads/download
+mv /tmp/src/extensions /opt/app-root/downloads/extensions
+mv /tmp/src/resources /opt/app-root/downloads/resources
+mv /tmp/src/admin/system /opt/app-root/downloads/admin/system
 
 rm -rf /tmp/src
