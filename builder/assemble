@@ -30,4 +30,4 @@ ls /tmp/src
 # mv /tmp/src/resources /opt/app-root/downloads/resources
 # mv /tmp/src/admin/system /opt/app-root/downloads/admin/system
 
-mv -rf /tmp/src/* /opt/app-root/src
+mv /tmp/src/* /opt/app-root/src
