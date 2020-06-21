@@ -19,9 +19,6 @@ set -eo pipefail
 
 # Download Abantecart.
 
-echo "*********** pwd"
-pwd
-
 
 # mkdir -p /opt/app-root/downloads
 # git clone https://github.com/onlyjunior/abantecart.git /opt/app-root/downloads/src

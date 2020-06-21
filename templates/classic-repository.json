@@ -27,7 +27,7 @@
         {
             "name": "SOURCE_REPOSITORY_URL",
             "description": "The source repository containing plugins, themes and language files.",
-            "value": "",
+            "value": "https://github.com/onlyjunior/abantecart.git",
             "required": true
         },
         {
@@ -76,12 +76,14 @@
             "description": "The name of the database user.",
             "name": "DATABASE_USERNAME",
             "from": "user[a-f0-9]{8}",
+            "value": "abantecart",
             "generate": "expression"
         },
         {
             "description": "The password for the database user.",
             "name": "DATABASE_PASSWORD",
             "from": "[a-zA-Z0-9]{12}",
+            "value": "abantecart",
             "generate": "expression"
         },
         {

@@ -12,6 +12,8 @@ set -eo pipefail
 
 mkdir -p /opt/app-root/downloads/admin
 
+ls /tmp/src
+
 # mkdir -p /tmp/src/system
 mkdir -p /tmp/src/image
 mkdir -p /tmp/src/download

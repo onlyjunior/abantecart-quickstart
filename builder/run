@@ -4,13 +4,7 @@ set -x
 
 set -eo pipefail
 
-echo "*********** pwd"
-pwd
-
-if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then
-
-    echo "*********** running install/cli_install.php"
-    
+if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then    
 
     php install/cli_install.php install 
         --db_hostname=$MYSQL_HOST
@@ -26,18 +20,6 @@ if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then
 
 fi
 
-
-echo "*********** ls /opt/app-root/downloads/"
-ls /opt/app-root/downloads/
-
-echo "*********** ls /tmp/"
-ls /tmp/
-
-echo "*********** ls /tmp/src"
-ls /tmp/src
-
-echo "*********** ls /opt/app-root/src"
-ls /opt/app-root/src
 
 # if [ -f /opt/app-root/downloads/system ]; then
 #     cp -f /opt/app-root/downloads/system/* system
