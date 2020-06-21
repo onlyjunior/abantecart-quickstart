@@ -120,9 +120,9 @@ if [ -f /opt/app-root/downloads/resources ]; then
     cp -f /opt/app-root/downloads/resources/* resources
 fi
 
-if [ -f /opt/app-root/downloads/admin/system ]; then
-    cp -f /opt/app-root/downloads/admin/system/* admin/system
-fi
+#if [ -f /opt/app-root/downloads/admin/system ]; then
+#    cp -f /opt/app-root/downloads/admin/system/* admin/system
+#fi
 
 # Enable WebDav access if authentication realm set and user database exists.
 
