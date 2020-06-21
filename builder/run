@@ -4,7 +4,13 @@ set -x
 
 set -eo pipefail
 
+echo "*********** pwd"
+pwd
+
 if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then
+
+    echo "*********** running install/cli_install.php"
+    
 
     php install/cli_install.php install 
         --db_hostname=$MYSQL_HOST
@@ -21,12 +27,21 @@ if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then
 fi
 
 
+echo "*********** ls /opt/app-root/downloads/"
+ls /opt/app-root/downloads/
 
+echo "*********** ls /tmp/"
+ls /tmp/
 
+echo "*********** ls /tmp/src"
+ls /tmp/src
 
-if [ -f /opt/app-root/downloads/system ]; then
-    cp -f /opt/app-root/downloads/system/* system
-fi
+echo "*********** ls /opt/app-root/src"
+ls /opt/app-root/src
+
+# if [ -f /opt/app-root/downloads/system ]; then
+#     cp -f /opt/app-root/downloads/system/* system
+# fi
 
 if [ -f /opt/app-root/downloads/image ]; then
     cp -f /opt/app-root/downloads/image/* image
@@ -36,9 +51,9 @@ if [ -f /opt/app-root/downloads/download ]; then
     cp -f /opt/app-root/downloads/download/* download
 fi
 
-if [ -f /opt/app-root/downloads/extensions ]; then
-    cp -f /opt/app-root/downloads/extensions/* extensions
-fi
+# if [ -f /opt/app-root/downloads/extensions ]; then
+#     cp -f /opt/app-root/downloads/extensions/* extensions
+# fi
 
 if [ -f /opt/app-root/downloads/resources ]; then
     cp -f /opt/app-root/downloads/resources/* resources
