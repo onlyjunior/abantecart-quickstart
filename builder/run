@@ -25,21 +25,21 @@ fi
 #     cp -f /opt/app-root/downloads/system/* system
 # fi
 
-if [ -f /opt/app-root/downloads/image ]; then
-    cp -f /opt/app-root/downloads/image/* image
-fi
+# if [ -f /opt/app-root/downloads/image ]; then
+    # cp -f /opt/app-root/downloads/image/* image
+# fi
 
-if [ -f /opt/app-root/downloads/download ]; then
-    cp -f /opt/app-root/downloads/download/* download
-fi
+# if [ -f /opt/app-root/downloads/download ]; then
+    # cp -f /opt/app-root/downloads/download/* download
+# fi
 
 # if [ -f /opt/app-root/downloads/extensions ]; then
 #     cp -f /opt/app-root/downloads/extensions/* extensions
 # fi
 
-if [ -f /opt/app-root/downloads/resources ]; then
-    cp -f /opt/app-root/downloads/resources/* resources
-fi
+# if [ -f /opt/app-root/downloads/resources ]; then
+    # cp -f /opt/app-root/downloads/resources/* resources
+# fi
 
 
 exec /usr/libexec/s2i/run
