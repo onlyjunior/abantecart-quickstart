@@ -2,26 +2,26 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-        "name": "wordpress-classic-repository",
+        "name": "abantecart-classic-repository",
 	"annotations": {
-            "openshift.io/display-name": "WordPress (Classic / Repository)",
-	    "description": "Creates a WordPress installation with separate MySQL database instance. Plugins, themes and language files are incorporated from a source code repository. Requires that two persistent volumes be available. If a ReadWriteMany persistent volume type is available and used, WordPress can be scaled to multiple replicas and the deployment strategy switched to Rolling to permit rolling deployments on restarts.",
-	    "tags": "quickstart,php,wordpress",
+        "openshift.io/display-name": "Abantecart (Classic / Repository)",
+	    "description": "Creates an Abantecart installation with separate MySQL database instance. Plugins, themes and language files are incorporated from a source code repository. Requires that two persistent volumes be available. If a ReadWriteMany persistent volume type is available and used, Abantecart can be scaled to multiple replicas and the deployment strategy switched to Rolling to permit rolling deployments on restarts.",
+	    "tags": "quickstart,php,abantecart",
             "iconClass": "icon-php"
-	}
+	    }
     },
     "parameters": [
         {
             "name": "APPLICATION_NAME",
-            "description": "The name of the WordPress instance.",
-            "value": "my-wordpress-site",
+            "description": "The name of the Abantecart instance.",
+            "value": "my-abantecart-site",
             "from": "[a-zA-Z0-9]",
             "required": true
         },
         {
             "name": "QUICKSTART_REPOSITORY_URL",
             "description": "The URL of the quickstart Git repository.",
-            "value": "https://github.com/openshift-evangelists/wordpress-quickstart",
+            "value": "https://github.com/onlyjunior/abantecart-quickstart",
             "required": true
         },
         {
@@ -37,26 +37,26 @@
             "required": true
         },
         {
-            "name": "WORDPRESS_VOLUME_SIZE",
-            "description": "Size of the persistent volume for Wordpress.",
+            "name": "ABANTECART_VOLUME_SIZE",
+            "description": "Size of the persistent volume for Abantecart.",
             "value": "1Gi",
             "required": true
         },
         {
-            "name": "WORDPRESS_VOLUME_TYPE",
-            "description": "Type of the persistent volume for Wordpress.",
+            "name": "ABANTECART_VOLUME_TYPE",
+            "description": "Type of the persistent volume for Abantecart.",
             "value": "ReadWriteOnce",
             "required": true
         },
         {
-            "name": "WORDPRESS_DEPLOYMENT_STRATEGY",
-            "description": "Type of the deployment strategy for Wordpress.",
+            "name": "ABANTECART_DEPLOYMENT_STRATEGY",
+            "description": "Type of the deployment strategy for Abantecart.",
             "value": "Recreate",
             "required": true
         },
         {
-            "name": "WORDPRESS_MEMORY_LIMIT",
-            "description": "Amount of memory available to WordPress.",
+            "name": "ABANTECART_MEMORY_LIMIT",
+            "description": "Amount of memory available to Abantecart.",
             "value": "512Mi",
             "required": true
         },
@@ -72,18 +72,18 @@
             "value": "512Mi",
             "required": true
         },
-	{
-	    "description": "The name of the database user.",
-	    "name": "DATABASE_USERNAME",
-	    "from": "user[a-f0-9]{8}",
-	    "generate": "expression"
-	},
-	{
-	    "description": "The password for the database user.",
-	    "name": "DATABASE_PASSWORD",
-	    "from": "[a-zA-Z0-9]{12}",
-	    "generate": "expression"
-	},
+        {
+            "description": "The name of the database user.",
+            "name": "DATABASE_USERNAME",
+            "from": "user[a-f0-9]{8}",
+            "generate": "expression"
+        },
+        {
+            "description": "The password for the database user.",
+            "name": "DATABASE_PASSWORD",
+            "from": "[a-zA-Z0-9]{12}",
+            "generate": "expression"
+        },
         {
             "name": "MYSQL_VERSION",
             "description": "The version of the MySQL database.",
@@ -150,11 +150,11 @@
                     "imageLabels": [
                         {
                             "name": "io.k8s.display-name",
-                            "value": "WordPress"
+                            "value": "Abantecart"
                         },
                         {
                             "name": "io.k8s.description",
-                            "value": "WordPress application and S2I builder."
+                            "value": "Abantecart application and S2I builder."
                         },
                         {
                             "name": "io.openshift.s2i.scripts-url",
@@ -166,7 +166,7 @@
                         },
                         {
                             "name": "io.openshift.tags",
-                            "value": "builder,php,wordpress"
+                            "value": "builder,php,abantecart"
                         }
                     ]
                 }
@@ -235,7 +235,7 @@
             },
             "spec": {
                 "strategy": {
-                    "type": "${WORDPRESS_DEPLOYMENT_STRATEGY}"
+                    "type": "${ABANTECART_DEPLOYMENT_STRATEGY}"
                 },
                 "triggers": [
                     {
@@ -246,7 +246,7 @@
                         "imageChangeParams": {
                             "automatic": true,
                             "containerNames": [
-                                "wordpress"
+                                "abantecart"
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
@@ -272,13 +272,13 @@
                             {
                                 "name": "data",
                                 "persistentVolumeClaim": {
-                                    "claimName": "${APPLICATION_NAME}-wordpress-data"
+                                    "claimName": "${APPLICATION_NAME}-abantecart-data"
                                 }
                             }
                         ],
                         "containers": [
                             {
-                                "name": "wordpress",
+                                "name": "abantecart",
                                 "image": "${APPLICATION_NAME}-img",
                                 "ports": [
                                     {
@@ -286,23 +286,23 @@
                                         "protocol": "TCP"
                                     }
                                 ],
-				"resources": {
+				                "resources": {
                                     "limits": {
-                                        "memory": "${WORDPRESS_MEMORY_LIMIT}"
-				    }
+                                        "memory": "${ABANTECART_MEMORY_LIMIT}"
+				                    }
                                 },
-				"readinessProbe": {
-				    "failureThreshold": 3,
-				    "httpGet": {
-					"path": "/wp-admin/install.php",
-					"port": 8080,
-					"scheme": "HTTP",
-					"httpHeaders": [
-					    {
-						"name": "X-Forwarded-Proto",
-						"value": "https"
-					    }
-					]
+                                "readinessProbe": {
+                                "failureThreshold": 3,
+                                "httpGet": {
+                                "path": "/index.php",
+                                "port": 8080,
+                                "scheme": "HTTP",
+                                "httpHeaders": [
+                                    {
+                                    "name": "X-Forwarded-Proto",
+                                    "value": "https"
+                                    }
+                                ]
 				    },
 				    "periodSeconds": 10,
 				    "successThreshold": 1,
@@ -311,7 +311,7 @@
 				"livenessProbe": {
 				    "failureThreshold": 3,
 				    "httpGet": {
-					"path": "/wp-admin/install.php",
+					"path": "/index.php",
 					"port": 8080,
 					"scheme": "HTTP",
 					"httpHeaders": [
@@ -328,7 +328,7 @@
                                 "env": [
                                     {
                                         "name": "MYSQL_DATABASE",
-                                        "value": "wordpress"
+                                        "value": "abantecart"
                                     },
                                     {
                                         "name": "MYSQL_USER",
@@ -344,7 +344,7 @@
                                     },
                                     {
                                         "name": "MYSQL_TABLE_PREFIX",
-                                        "value": "wp_"
+                                        "value": "abc_"
                                     }
                                 ],
                                 "volumeMounts": [
@@ -445,7 +445,7 @@
                                 "env": [
                                     {
                                         "name": "MYSQL_DATABASE",
-                                        "value": "wordpress"
+                                        "value": "abantecart"
                                     },
                                     {
                                         "name": "MYSQL_USER",
@@ -565,18 +565,18 @@
             "kind": "PersistentVolumeClaim",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${APPLICATION_NAME}-wordpress-data",
+                "name": "${APPLICATION_NAME}-abantecart-data",
                 "labels": {
                     "app": "${APPLICATION_NAME}"
                 }
             },
             "spec": {
                 "accessModes": [
-                    "${WORDPRESS_VOLUME_TYPE}"
+                    "${ABANTECART_VOLUME_TYPE}"
                 ],
                 "resources": {
                     "requests": {
-                        "storage": "${WORDPRESS_VOLUME_SIZE}"
+                        "storage": "${ABANTECART_VOLUME_SIZE}"
                     }
                 }
             }
