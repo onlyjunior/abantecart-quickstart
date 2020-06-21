@@ -11,7 +11,7 @@ set -eo pipefail
 # persistent volume.
 
 # mkdir -p /opt/app-root/downloads
-mkdir -p /opt/app-root/downloads/admin
+mkdir -p /opt/app-root/downloads/admin/system
 
 mkdir -p /tmp/src/system
 mkdir -p /tmp/src/image
