@@ -20,7 +20,7 @@ set -eo pipefail
 # Download Abantecart.
 
 mkdir -p /opt/app-root/downloads
-git clone https://github.com/onlyjunior/abantecart.git
+git clone https://github.com/onlyjunior/abantecart.git src
 
 mkdir -p /opt/app-root/s2i
 
