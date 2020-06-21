@@ -4,6 +4,10 @@ set -x
 
 set -eo pipefail
 
+cp -Rf /tmp/src/* /opt/app-root/src/
+ls /opt/app-root/src
+
+
 # mv /tmp/src/* /opt/app-root/src
 
 # if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then    
