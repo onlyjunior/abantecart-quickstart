@@ -48,4 +48,6 @@ set -eo pipefail
 # fi
 
 
+export INCLUDE_PATH=/tmp/src
+
 exec /usr/libexec/s2i/run
