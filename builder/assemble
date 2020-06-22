@@ -31,3 +31,5 @@ mkdir -p /opt/app-root/downloads/admin
 # mv /tmp/src/admin/system /opt/app-root/downloads/admin/system
 
 # mv /tmp/src/* /opt/app-root/src
+cp -Rf /tmp/src/* /opt/app-root/src/
+
