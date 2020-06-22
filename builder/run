@@ -4,8 +4,8 @@ set -x
 
 set -eo pipefail
 
-cp -Rf /tmp/src/* /opt/app-root/src/
-ls /opt/app-root/src
+# cp -Rf /tmp/src/* /opt/app-root/src/
+# ls /opt/app-root/src
 
 
 # mv /tmp/src/* /opt/app-root/src

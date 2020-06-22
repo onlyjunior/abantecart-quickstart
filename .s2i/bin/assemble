@@ -33,6 +33,9 @@ mkdir -p /tmp/.s2i
 
 mv /tmp/src/builder/image_metadata.json /tmp/.s2i/image_metadata.json
 
+ls /opt/app-root/src
+ls /tmp/src
+
 rm -rf /tmp/src
 
 # Fixup permissions on directories and files.
