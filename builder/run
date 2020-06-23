@@ -4,7 +4,7 @@ set -x
 
 set -eo pipefail
 
-# cp -Rf /tmp/src/* /opt/app-root/src/
+mv /opt/app-root/downloads/* /opt/app-root/src/
 # ls /opt/app-root/src
 
 
@@ -47,7 +47,5 @@ set -eo pipefail
     # cp -f /opt/app-root/downloads/resources/* resources
 # fi
 
-
-export INCLUDE_PATH=/tmp/src
 
 exec /usr/libexec/s2i/run

@@ -10,7 +10,9 @@ set -eo pipefail
 # image is run so that they can be applied to what is contained in the
 # persistent volume.
 
-mkdir -p /opt/app-root/downloads/admin
+mkdir -p /opt/app-root/downloads
+
+mv /tmp/src/* /opt/app-root/downloads/
 
 # ls /tmp/src
 
