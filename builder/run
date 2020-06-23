@@ -5,26 +5,21 @@ set -x
 set -eo pipefail
 
 cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
-# ls /opt/app-root/src
 
+if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then    
+    php install/cli_install.php install 
+        --db_hostname=$MYSQL_HOST
+        --db_username=$MYSQL_USER
+        --db_password=$MYSQL_PASSWORD
+        --db_database=$MYSQL_DATABASE
+        --db_driver=mysqli
+        --db_port=3306
+        --username=admin
+        --password=AiT1448
+        --email=billy@baldisser.com
+        --http_server=http://localhost
 
-# mv /tmp/src/* /opt/app-root/src
-
-# if grep -q "SERVER_NAME" system/config.php; [ $? -eq 0 ]; then    
-
-#     php install/cli_install.php install 
-#         --db_hostname=$MYSQL_HOST
-#         --db_username=$MYSQL_USER
-#         --db_password=$MYSQL_PASSWORD
-#         --db_database=$MYSQL_DATABASE
-#         --db_driver=mysqli
-#         --db_port=3306
-#         --username=admin
-#         --password=AiT1448
-#         --email=billy@baldisser.com
-#         --http_server=http://localhost
-
-# fi
+fi
 
 
 # if [ -f /opt/app-root/downloads/system ]; then
