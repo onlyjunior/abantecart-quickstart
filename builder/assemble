@@ -12,7 +12,9 @@ set -eo pipefail
 
 mkdir -p /opt/app-root/downloads
 
-mv /tmp/src/* /opt/app-root/downloads/
+cp -Rf /tmp/src/* /opt/app-root/downloads/
+
+rm -rf /tmp/src
 
 # ls /tmp/src
 
@@ -33,5 +35,5 @@ mv /tmp/src/* /opt/app-root/downloads/
 # mv /tmp/src/admin/system /opt/app-root/downloads/admin/system
 
 # mv /tmp/src/* /opt/app-root/src
-cp -Rf /tmp/src/* /opt/app-root/src/
+
 
