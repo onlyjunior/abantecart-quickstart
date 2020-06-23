@@ -4,7 +4,7 @@ set -x
 
 set -eo pipefail
 
-mv /opt/app-root/downloads/* /opt/app-root/src/
+cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
 # ls /opt/app-root/src
 
 
