@@ -7,7 +7,7 @@ set -eo pipefail
 cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
 
 if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then    
-    php cli_install.php install \
+    php system/cli_install.php install \
         --db_host=$MYSQL_HOST \
         --db_user=$MYSQL_USER \
         --db_password=$MYSQL_PASSWORD \
