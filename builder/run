@@ -7,31 +7,18 @@ set -eo pipefail
 cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
 
 if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then    
-    php install/cli_install.php 
-        #install \
-        # --db_hostname=$MYSQL_HOST \
-        # --db_username=$MYSQL_USER \
-        # --db_password=$MYSQL_PASSWORD \
-        # --db_database=$MYSQL_DATABASE \
-        # --db_driver=mysqli \ 
-        # --db_port=3306 \
-        # --username=admin \
-        # --password=AiT1448 \
-        # --email=billy@baldisser.com \
-        # --http_server=http://localhost 
-
-        # --db_host=$MYSQL_HOST \
-        # --db_user=$MYSQL_USER \
-        # --db_password=$MYSQL_PASSWORD \
-        # --db_name=$MYSQL_DATABASE \
-        # --db_driver=mysqli \
-        # --db_prefix=abc_ \
-        # --admin_path=admin \
-        # --username=admin \
-        # --password=admin \
-        # --email=wbaldisser@gmail.com \
-        # --http_server=http://localhost \
-        # --with-sample-data=''
+    php cli_install.php install \
+        --db_host=$MYSQL_HOST \
+        --db_user=$MYSQL_USER \
+        --db_password=$MYSQL_PASSWORD \
+        --db_name=$MYSQL_DATABASE \
+        --db_driver=mysqli \
+        --db_prefix=abc \
+        --admin_path=admin \
+        --username=admin \
+        --password=admin \
+        --email=mail@mail.com \
+        --http_server=http://localhost
 
 fi
 
