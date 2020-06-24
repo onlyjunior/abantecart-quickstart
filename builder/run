@@ -12,7 +12,7 @@ if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then
         --db_user=$MYSQL_USER \
         --db_password=$MYSQL_PASSWORD \
         --db_name=$MYSQL_DATABASE \
-        --db_driver=mysqli \
+        --db_driver=amysqli \
         --db_prefix=abc \
         --admin_path=admin \
         --username=admin \
