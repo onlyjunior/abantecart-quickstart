@@ -4,25 +4,6 @@ set -x
 
 set -eo pipefail
 
-# During this initial build phase we are going to construct a new custom
-# image based off the default PHP S2I builder. The resulting image can be
-# run directly to create a standalone instance of WordPress not linked to
-# anything, or it can be run as a S2I builder so that plugins, themes and
-# language files can be pulled down from a repository and incorporated into
-# the WordPress installation.
-
-# Use latest stable version of WordPress if no version is specified.
-
-#if [ -z "$WORDPRESS_INSTALL_VERSION" ]; then
-#  WORDPRESS_INSTALL_VERSION=$(curl -s "https://api.wordpress.org/core/version-check/1.7/?version=4.1" | python -c 'import sys, json; latest = json.load(sys.stdin)["offers"][0]; print(latest["version"] if latest["response"] == "upgrade" else "4.1")')
-#fi
-
-# Download Abantecart.
-
-
-# mkdir -p /opt/app-root/downloads
-# git clone https://github.com/onlyjunior/abantecart.git /opt/app-root/downloads/src
-
 mkdir -p /opt/app-root/s2i
 
 mv /tmp/src/builder/assemble /opt/app-root/s2i/assemble
