@@ -6,10 +6,14 @@ set -eo pipefail
 
 ls /opt/app-root/src/
 
-cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
 
-if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then    
+if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then
+    # if abantecart is not installed yet
+
+    # copy all the source code
+    cp -Rf /opt/app-root/downloads/* /opt/app-root/src/
     
+    # execute the installer
     php install/cli_install.php install \
         --db_host=$MYSQL_HOST \
         --db_user=$MYSQL_USER \
@@ -23,28 +27,13 @@ if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then
         --email=mail@mail.com \
         --http_server=http://localhost
 
+else
+    # if it is already installer, copy all the source code except images, cache, logs...
+    cp -Rf /opt/app-root/downloads/admin/* /opt/app-root/src/
+    cp -Rf /opt/app-root/downloads/extensions/* /opt/app-root/src/
+    cp -Rf /opt/app-root/downloads/storefront/* /opt/app-root/src/
+    cp -Rf /opt/app-root/downloads/core/* /opt/app-root/src/
+    cp -Rf /opt/app-root/downloads/static_pages/* /opt/app-root/src/
 fi
-
-
-# if [ -f /opt/app-root/downloads/system ]; then
-#     cp -f /opt/app-root/downloads/system/* system
-# fi
-
-# if [ -f /opt/app-root/downloads/image ]; then
-    # cp -f /opt/app-root/downloads/image/* image
-# fi
-
-# if [ -f /opt/app-root/downloads/download ]; then
-    # cp -f /opt/app-root/downloads/download/* download
-# fi
-
-# if [ -f /opt/app-root/downloads/extensions ]; then
-#     cp -f /opt/app-root/downloads/extensions/* extensions
-# fi
-
-# if [ -f /opt/app-root/downloads/resources ]; then
-    # cp -f /opt/app-root/downloads/resources/* resources
-# fi
-
 
 exec /usr/libexec/s2i/run
