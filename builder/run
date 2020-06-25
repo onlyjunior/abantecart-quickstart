@@ -7,7 +7,8 @@ set -eo pipefail
 ls /opt/app-root/src/
 
 
-if grep -q SERVER_NAME system/config.php; [ $? -eq 1 ]; then
+if [[ -f "system/config.php" ]]; then
+
     # if abantecart is not installed yet
 
     # copy all the source code
