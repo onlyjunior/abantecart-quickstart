@@ -51,7 +51,7 @@
         {
             "name": "ABANTECART_DEPLOYMENT_STRATEGY",
             "description": "Type of the deployment strategy for Abantecart.",
-            "value": "Recreate",
+            "value": "Rolling",
             "required": true
         },
         {
