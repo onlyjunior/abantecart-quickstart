@@ -30,11 +30,11 @@ if [[ -f "system/config.php" ]]; then
 
 else
     # if it is already installer, copy all the source code except images, cache, logs...
-    cp -Rf /opt/app-root/downloads/admin/* /opt/app-root/src/
-    cp -Rf /opt/app-root/downloads/extensions/* /opt/app-root/src/
-    cp -Rf /opt/app-root/downloads/storefront/* /opt/app-root/src/
-    cp -Rf /opt/app-root/downloads/core/* /opt/app-root/src/
-    cp -Rf /opt/app-root/downloads/static_pages/* /opt/app-root/src/
+    cp -Rf /opt/app-root/downloads/admin/* /opt/app-root/src/admin/
+    cp -Rf /opt/app-root/downloads/extensions/* /opt/app-root/src/extensions/
+    cp -Rf /opt/app-root/downloads/storefront/* /opt/app-root/src/storefront/
+    cp -Rf /opt/app-root/downloads/core/* /opt/app-root/src/core/
+    cp -Rf /opt/app-root/downloads/static_pages/* /opt/app-root/src/static_pages/
 fi
 
 exec /usr/libexec/s2i/run
